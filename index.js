@@ -26,15 +26,11 @@ export default {
     const _callback = (res) => {
       callback(res);
     };
-    const listenerCount = screenGuardEmitter.listenerCount(
-      ScreenGuardConstants.EVENT_NAME
+    
+    screenGuardEmitter.addListener(
+      ScreenGuardConstants.EVENT_NAME,
+      _callback
     );
-    if (!listenerCount) {
-      screenGuardEmitter.addListener(
-        ScreenGuardConstants.EVENT_NAME,
-        _callback
-      );
-    }
   },
   /**
    * Activate screenshot blocking with a blur effect after captured (iOS 13+, Android 6+)
